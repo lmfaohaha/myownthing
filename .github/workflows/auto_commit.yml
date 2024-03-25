@@ -11,6 +11,8 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.AUTOCOM }}
 
     - name: Setup Git
       run: |
