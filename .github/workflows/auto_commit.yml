@@ -1,0 +1,25 @@
+name: Auto Commit
+
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+
+    - name: Setup Git
+      run: |
+        git config --global user.name 'lmfaohaha'
+        git config --global user.email 'fake@leonardobuares.dev'
+
+    - name: Commit and Push
+      run: |
+        echo "$(date) - Auto commit" >> auto_commit.txt
+        git add .
+        git commit -m "Auto commit on $(date)"
+        git push
